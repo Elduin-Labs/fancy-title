@@ -1,4 +1,4 @@
-package com.example.modtemplate.platform;
+package com.elduin.fancy_title.platform;
 
 public interface Platform {
 	boolean isModLoaded(String modId);

@@ -1,6 +1,6 @@
-# <MOD_DISPLAY_NAME>
+# Fancy Title
 
-<One plain sentence: what this mod does, in Elduin's words.>
+Makes the title screen fancier: no "Java Edition" under the logo, and shiny sparkles around it.
 
 This file is read automatically whenever Claude Code is opened in this folder.
 Everything below is specific to this one mod. The general rules about how to
@@ -8,13 +8,24 @@ work with Elduin live in `~/.claude/CLAUDE.md`.
 
 ## Facts about this mod
 
-    mod id            <mod_id>              (underscores — never change this)
-    slug              <mod-slug>            (repo name and Modrinth slug)
-    package           <com.elduin.mod_id>
+    mod id            fancy_title           (underscores — never change this)
+    slug              fancy-title           (repo name and Modrinth slug)
+    package           com.elduin.fancy_title
     loader            fabric                (only fabric — see below)
-    minecraft         <1.21.11, 26.2>
-    primary version   <1.21.11>             (the one he plays)
+    minecraft         1.21.11, 26.2
+    primary version   1.21.11               (the one he plays)
     java              21 for 1.21.x, 25 for 26.x — Gradle picks this per version
+
+## How it works
+
+- Client only. "Java Edition" is gone because the mod ships a fully
+  transparent `assets/minecraft/textures/gui/title/edition.png` (512x64), which
+  overrides the vanilla one. No code.
+- `client/Sparkles` keeps a list of twinkling four-pointed stars over the logo
+  area (`LogoRenderer.LOGO_WIDTH` x `LOGO_HEIGHT` at `DEFAULT_HEIGHT_OFFSET`),
+  two new ones per tick, drawn with `fill`.
+- Version differences: 26 renamed `GuiGraphics` to `GuiGraphicsExtractor`, and
+  Fabric's `ScreenEvents.afterRender` to `afterExtract`.
 
 The mod id is baked into save files. Once a world has been played with this mod,
 **changing the mod id breaks that world.** Rename the display name freely;
