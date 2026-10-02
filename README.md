@@ -4,8 +4,9 @@
 
 Makes the Minecraft title screen fancier! ✨
 
-The "Java Edition" words under the MINECRAFT logo are gone, and shiny
-sparkles twinkle all over the logo in white, gold, blue and pink.
+When the title screen opens, the MINECRAFT logo **pops up** with a bounce.
+The "Java Edition" words under it are gone, and shiny sparkles twinkle all
+over the logo in white, gold, blue and pink.
 
 Fabric, for Minecraft 1.21.11 and 26.2. Needs Fabric API. Only goes in your
 game (not on servers).
