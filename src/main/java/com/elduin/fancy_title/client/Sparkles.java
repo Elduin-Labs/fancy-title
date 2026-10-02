@@ -50,6 +50,9 @@ public final class Sparkles {
 
 	/** Called every tick while the title screen is open. */
 	public static void tick(int screenWidth) {
+		if (PopIn.justPopped()) {
+			burst(screenWidth);
+		}
 		Iterator<Sparkle> it = SPARKLES.iterator();
 		while (it.hasNext()) {
 			Sparkle s = it.next();
@@ -58,6 +61,9 @@ public final class Sparkles {
 			if (s.age >= s.life) {
 				it.remove();
 			}
+		}
+		if (PopIn.scale() < 0.5f) {
+			return;  // nothing to twinkle on while the logo is hidden
 		}
 		int left = screenWidth / 2 - LogoRenderer.LOGO_WIDTH / 2;
 		for (int i = 0; i < PER_TICK; i++) {
@@ -91,6 +97,19 @@ public final class Sparkles {
 			graphics.fill(x + 1, y, x + 1 + arm, y + 1, glow);
 			graphics.fill(x, y - arm, x + 1, y, glow);
 			graphics.fill(x, y + 1, x + 1, y + 1 + arm, glow);
+		}
+	}
+
+	/** A shower of sparkles flying out of the middle of the logo as it pops out. */
+	private static void burst(int screenWidth) {
+		float cx = screenWidth / 2.0f;
+		float cy = LOGO_TOP + LogoRenderer.LOGO_HEIGHT / 2.0f;
+		for (int i = 0; i < 40; i++) {
+			double angle = RANDOM.nextDouble() * Math.PI * 2.0;
+			double reach = 20 + RANDOM.nextDouble() * 130;
+			float x = (float) (cx + Math.cos(angle) * reach);
+			float y = (float) (cy + Math.sin(angle) * reach * 0.35);
+			SPARKLES.add(new Sparkle(x, y, 10 + RANDOM.nextInt(16), COLOURS[RANDOM.nextInt(COLOURS.length)]));
 		}
 	}
 

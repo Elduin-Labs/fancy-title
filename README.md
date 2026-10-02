@@ -4,7 +4,8 @@
 
 Makes the Minecraft title screen fancier! ✨
 
-When the title screen opens, the MINECRAFT logo **pops up** with a bounce.
+On the title screen the MINECRAFT logo hides and **pops out** again every
+three seconds, with a bounce and a shower of sparkles.
 The "Java Edition" words under it are gone, and shiny sparkles twinkle all
 over the logo in white, gold, blue and pink.
 

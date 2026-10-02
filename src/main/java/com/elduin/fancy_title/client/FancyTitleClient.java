@@ -22,12 +22,7 @@ public final class FancyTitleClient {
 				PopIn.start();
 			}
 			Sparkles.clear();
-			ScreenEvents.afterTick(screen).register(s -> {
-				// Sparkles start once the logo has finished popping in.
-				if (PopIn.done()) {
-					Sparkles.tick(s.width);
-				}
-			});
+			ScreenEvents.afterTick(screen).register(s -> Sparkles.tick(s.width));
 			// Fabric renamed "render" to "extract" in 26, along with Minecraft's GUI drawing.
 			//? if >=26 {
 			/*ScreenEvents.afterExtract(screen).register((s, graphics, mouseX, mouseY, partialTick) ->

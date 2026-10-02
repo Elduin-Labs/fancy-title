@@ -24,10 +24,10 @@ work with Elduin live in `~/.claude/CLAUDE.md`.
 - `client/Sparkles` keeps a list of twinkling four-pointed stars over the logo
   area (`LogoRenderer.LOGO_WIDTH` x `LOGO_HEIGHT` at `DEFAULT_HEIGHT_OFFSET`),
   two new ones per tick, drawn with `fill`.
-- The logo pops in (grows from nothing, overshoots, settles; `client/PopIn`,
-  0.8 s) each time a new title screen opens. `mixin/LogoRendererMixin` scales
+- The logo hides and pops out again every 3 s (`client/PopIn`: 0.8 s bounce out,
+  sits, shrinks away from 2.6 s; restarts when a new title screen opens). `mixin/LogoRendererMixin` scales
   the pose around the logo's middle at HEAD of `renderLogo` and pops at RETURN.
-  Sparkles start once the pop is done.
+  Each pop fires a burst of 40 sparkles; normal twinkles pause while it is hidden.
 - Version differences: 26 renamed `GuiGraphics` to `GuiGraphicsExtractor` and
   `LogoRenderer.renderLogo` to `extractRenderState`, and Fabric's
   `ScreenEvents.afterRender` to `afterExtract`.
