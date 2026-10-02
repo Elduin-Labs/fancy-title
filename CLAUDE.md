@@ -28,6 +28,11 @@ work with Elduin live in `~/.claude/CLAUDE.md`.
   sits, shrinks away from 2.6 s; restarts when a new title screen opens). `mixin/LogoRendererMixin` scales
   the pose around the logo's middle at HEAD of `renderLogo` and pops at RETURN.
   Each pop fires a burst of 40 sparkles; normal twinkles pause while it is hidden.
+- The logo says MINCRAFT: the same mixin redirects the logo's first `blit` and
+  draws it in two pieces, logo units [0, 89) and [118, 256), skipping the E
+  and nudging both right by half the gap. Those numbers were measured on the
+  1.21.11 and 26.2 logo (same picture); if Mojang redraws the logo they need
+  measuring again. The "Minceraft" easter-egg logo is drawn as normal.
 - Version differences: 26 renamed `GuiGraphics` to `GuiGraphicsExtractor` and
   `LogoRenderer.renderLogo` to `extractRenderState`, and Fabric's
   `ScreenEvents.afterRender` to `afterExtract`.
